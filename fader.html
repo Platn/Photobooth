@@ -1,0 +1,82 @@
+<!--DOCTYPE HTML-->
+
+<html>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="fader.css">
+  <link rel="stylesheet" type="text/css" media="(max-width: 480px)" href="mobile.css">
+  <meta charset=utf-8 />
+  <title>Fader</title>
+</head>
+
+<!-- Individual Button upload
+            <div id="uploadBar" onclick="document.getElementById('fileSelector').click();">
+                <div class="inlineBox"><img id="navBarImage" src="./photobooth/uploadIcon-01.png" />
+                   <input type="file" id="fileSelector" style="display:none;" />
+    -->
+
+<!--  <body class="vbox viewport">-->
+
+<body class="vbox viewport" onload="dumpDB()" id="main">
+  <header>
+    <div id="headerFont">
+      &nbsp&nbsp&nbsp&nbsp&nbsp&nbspPhotobooth.
+    </div>
+  </header>
+  <section class="main" id="main">
+    <uploadItems id="uploadItems">
+      <div class="loader"></div>
+      <!-- <div id="dumpAllImages"> -->
+
+      <!--            <label id="label" for="clicker" class="btn">LABELS</label>&nbsp -->
+      <!--            <input type="button" onclick="getLabels('hula', 'label')" id="clicker" value="LabelClick">-->
+      <!-- </div> -->
+    </uploadItems>
+    <nav>
+
+      <!-- Upload Bar without expansion-->
+      <div id="uploadBar" onclick="document.getElementsByClassName('uploadBarExpand')[0].classList.toggle('collapsed')">
+        <div class="inlineBox"><img id="navBarImage" src="./photobooth/uploadIcon-01.png" />
+          <b>Upload</b>
+        </div>
+      </div>
+
+      <!-- Expanded Upload bar here -->
+      <div class="uploadBarExpand">
+        <input type="file" id="fileSelector" style="display: none;" onchange="selectFileName()" accept="image/*" />
+        <input id="box" type="button" value="choose file..." onclick="document.getElementById('fileSelector').click();" />
+        <label id="fileName">No files selected</label>
+
+        <input id="box" type="submit" value="upload" onclick=loadItem() />
+      </div>
+
+      <!-- Text Submission Box after expanding with an icon -->
+      <div id="textSubmit" class="textSubmit" onclick="document.getElementsByClassName('textSubmitExpand')[0].classList.toggle('collapsed'); focusBox();">
+
+        <div class="inlineBox">
+          <img id="navBarImage" src="./photobooth/filterIcon-01.png" />Search
+        </div>
+
+      </div>
+
+      <div id="textSubmitExpand" class="textSubmitExpand">
+        <input id="searchBox" type="text" name="search" placeholder="Filter" onkeydown="filterSearch()" onkeyup="filterSearch()">
+        <div id="textSubmitButtons">
+          <input type="submit" id="enter" value="enter" onclick="filterSearch()" />
+          <input type="submit" id="clear_filter" value="clear filter " onclick="clearSearch(),focusBox()" />
+        </div>
+      </div>
+
+      <!-- Favorites Bar still needs work to be done -->
+      <div id=" favoritesBar " onclick="clicked() ">
+        <div class="inlineBox "><img id="navBarImage " src="./photobooth/favoritesIcon.png " />
+          <b>Favorites</b>
+        </div>
+      </div>
+    </nav>
+  </section>
+
+  <script src="fader.js "></script>
+</body>
+
+</html>
